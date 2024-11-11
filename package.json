@@ -3,7 +3,11 @@
     "module": "index.ts",
     "type": "module",
     "scripts": {
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "build": "bun build ./src/cli.ts --compile --outfile ./bin/typex"
+    },
+    "bin": {
+        "typex": "./bin/typex"
     },
     "devDependencies": {
         "@types/bun": "latest",
