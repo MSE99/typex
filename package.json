@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "format": "prettier . --write",
-        "build": "bun build ./src/cli.ts --compile --outfile ./bin/typex"
+        "build": "bun build ./src/cli.ts --compile --outfile ./bin/typex",
+        "ci": "prettier . --check"
     },
     "bin": {
         "typex": "./bin/typex"

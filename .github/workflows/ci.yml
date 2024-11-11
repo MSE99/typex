@@ -1,0 +1,23 @@
+name: CI
+
+on:
+    push:
+        branches: ["main"]
+
+jobs:
+    lint-and-build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: oven-sh/setup-bun@v2
+
+            - uses: actions/cache@v3
+              paths: node_modules
+              key: node-modules-cache-${{ hashFiles('./bun.lockb') }}
+
+            - name: Installing dependencies
+              run: bun install
+
+            - name: Running CI script
+              run: bun run ci
