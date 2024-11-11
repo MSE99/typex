@@ -13,8 +13,9 @@ jobs:
             - uses: oven-sh/setup-bun@v2
 
             - uses: actions/cache@v3
-              path: node_modules
-              key: node-modules-cache-${{ hashFiles('./bun.lockb') }}
+              with:
+                  path: node_modules
+                  key: node-modules-cache-${{ hashFiles('./bun.lockb') }}
 
             - name: Installing dependencies
               run: bun install
