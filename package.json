@@ -1,5 +1,5 @@
 {
-    "name": "typex",
+    "name": "@mse/typex",
     "module": "index.ts",
     "type": "module",
     "scripts": {
