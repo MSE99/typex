@@ -17,7 +17,9 @@ describe("fs", () => {
         vi.spyOn(process, "cwd").mockReturnValue(dir);
         vi.spyOn(console, "log");
 
-        await handlePattern("*.ts");
+        await handlePattern("*.ts", {
+            full: false,
+        });
 
         expect(console.log).not.toHaveBeenCalled();
     });
@@ -45,10 +47,47 @@ describe("fs", () => {
             args.forEach((a) => (printed += a));
         });
 
-        await handlePattern("*.ts");
+        await handlePattern("*.ts", { full: false });
 
         expect(printed).toContain("Foo");
         expect(printed).toContain("Baz");
+        expect(printed).not.toContain("Naz");
+    });
+
+    test("handlePattern: should support type filters.", async () => {
+        const dir = prepTestDir();
+
+        Fs.writeFileSync(
+            Path.join(dir, "1.ts"),
+            `
+            interface Foo {}
+            interface Foo2 {}
+            interface Foo3 {}
+
+            type Baz = {}
+            var Naz = {}
+
+            function red() {}
+
+            const {} = {}
+        `,
+        );
+
+        Fs.writeFileSync(Path.join(dir, "2.ts"), `const nummy = 12`);
+
+        let printed = "";
+
+        vi.spyOn(process, "cwd").mockReturnValue(dir);
+        vi.spyOn(console, "log").mockImplementation((...args: string[]) => {
+            args.forEach((a) => (printed += a));
+        });
+
+        await handlePattern("*.ts", { full: true, matches: /Foo.*/ });
+
+        expect(printed).toContain("Foo");
+        expect(printed).toContain("Foo2");
+        expect(printed).toContain("Foo3");
+        expect(printed).not.toContain("Baz");
         expect(printed).not.toContain("Naz");
     });
 });
