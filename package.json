@@ -5,7 +5,7 @@
     "scripts": {
         "format": "prettier . --write",
         "build": "esbuild ./src/cli.ts --bundle --platform=node --outfile=./bin/typex.cjs --packages=external",
-        "ci": "prettier . --check && vitest",
+        "ci": "prettier . --check && vitest && bun run build",
         "test": "vitest"
     },
     "bin": {
