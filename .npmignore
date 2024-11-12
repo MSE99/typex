@@ -2,3 +2,4 @@ src
 src/**
 .github
 __tests__
+vitest.config.ts
