@@ -4,7 +4,7 @@ import { program } from "commander";
 import { handlePattern } from "./typescript";
 
 program
-    .description("Typex is a tool for extracting types from TypeScript modules")
+    .description("Typex is a tool for extracting types from TypeScript modules (version 1.2)")
     .argument("<patterns...>", "Patterns of filenames to scan for types")
     .option("-f, --full", "Will only print print files with at least one type")
     .option("-m, --matches <regex>", "Regex if included will be used to filter the types")
