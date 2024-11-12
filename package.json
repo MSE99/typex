@@ -4,15 +4,16 @@
     "type": "module",
     "scripts": {
         "format": "prettier . --write",
-        "build": "bun build ./src/cli.ts --compile --outfile ./bin/typex",
+        "build": "esbuild ./src/cli.ts --bundle --platform=node --outfile=./bin/typex.cjs --packages=external",
         "ci": "prettier . --check && vitest",
         "test": "vitest"
     },
     "bin": {
-        "typex": "./bin/typex"
+        "typex": "./bin/typex.cjs"
     },
     "devDependencies": {
         "@types/bun": "latest",
+        "esbuild": "^0.24.0",
         "prettier": "^3.3.3",
         "prettier-plugin-organize-imports": "^4.1.0",
         "vitest": "^2.1.4"
