@@ -1,8 +1,8 @@
-import { describe, test, expect } from "vitest";
-import Path from "path";
-import OS from "os";
 import Crypto from "crypto";
 import Fs from "fs";
+import OS from "os";
+import Path from "path";
+import { describe, expect, test } from "vitest";
 import { readFilenames } from "../src/fs";
 
 describe("fs", () => {
