@@ -1,0 +1,4 @@
+src
+src/**
+.github
+__tests__
