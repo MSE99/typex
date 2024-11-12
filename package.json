@@ -5,14 +5,16 @@
     "scripts": {
         "format": "prettier . --write",
         "build": "bun build ./src/cli.ts --compile --outfile ./bin/typex",
-        "ci": "prettier . --check"
+        "ci": "prettier . --check",
+        "test": "vitest"
     },
     "bin": {
         "typex": "./bin/typex"
     },
     "devDependencies": {
         "@types/bun": "latest",
-        "prettier": "^3.3.3"
+        "prettier": "^3.3.3",
+        "vitest": "^2.1.4"
     },
     "peerDependencies": {
         "typescript": "^5.0.0"
